@@ -4,5 +4,5 @@ require 'sqlite3'
 require 'pony'
 
 get '/' do
-  'Hello, world!'
+  erb :index
 end
