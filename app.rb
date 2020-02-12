@@ -23,6 +23,8 @@ configure do
 end
 
 get '/' do
+  @all_posts = @db.execute 'SELECT * FROM Posts ORDER BY rowid DESC'
+
   erb :index
 end
 
