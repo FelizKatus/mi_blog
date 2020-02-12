@@ -39,6 +39,7 @@ end
 configure do
   @db = init_db
   @db.execute 'CREATE TABLE IF NOT EXISTS [Posts] (
+    [id] INTEGER PRIMARY KEY AUTOINCREMENT,
     [title] TEXT,
     [content] TEXT,
     [created_date] DATE
@@ -47,7 +48,7 @@ configure do
 end
 
 get '/' do
-  @all_posts = @db.execute 'SELECT * FROM Posts ORDER BY rowid DESC'
+  @all_posts = @db.execute 'SELECT * FROM Posts ORDER BY id DESC'
 
   erb :index
 end

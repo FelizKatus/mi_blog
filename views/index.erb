@@ -2,7 +2,7 @@
   From the Firehose
 </h3>
 
-<% @all_posts.each do |post| %>
+<% @all_posts.each_with_index do |post, i| %>
   <div class="blog-post">
     <h2 class="blog-post-title">
       <%= post['title'] %>
@@ -11,6 +11,8 @@
       <%= post['created_date'] %>
     </p>
     <%= post['content'] %>
+    <hr>
+    <a href="/post/<%= post['id'] %>">Comments</a>
   </div>
 <% end %>
 
