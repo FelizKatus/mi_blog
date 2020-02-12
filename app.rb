@@ -10,12 +10,12 @@ def init_db
 end
 
 before do
-  db = init_db
+  @db = init_db
 end
 
 configure do
-  db = init_db
-  db.execute 'CREATE TABLE IF NOT EXISTS [Posts] (
+  @db = init_db
+  @db.execute 'CREATE TABLE IF NOT EXISTS [Posts] (
     [title] TEXT,
     [content] TEXT,
     [created_date] DATE
@@ -43,6 +43,8 @@ post '/new' do
       return erb :new if @error.length > 1
     end
   end
+
+  @db.execute 'INSERT INTO Posts (title, content, created_date) VALUES (?, ?, datetime())', [@title, @content]
 
   @message = "Congratulations! The new post created."
 
