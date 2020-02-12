@@ -10,7 +10,16 @@ def init_db
 end
 
 before do
-  init_db
+  db = init_db
+end
+
+configure do
+  db = init_db
+  db.execute 'CREATE TABLE IF NOT EXISTS [Posts] (
+    [title] TEXT,
+    [content] TEXT,
+    [created_date] DATE
+  )'
 end
 
 get '/' do
@@ -22,8 +31,20 @@ get '/new' do
 end
 
 post '/new' do
-  title   = params[:title]
-  content = params[:content]
+  @title   = params[:title]
+  @content = params[:content]
 
-  erb "#{title} <br> #{content}"
+  hh = {:title   => 'Type a title',
+        :content => 'Type a post text'}
+
+  hh.each do |key, value|
+    if params[key] == ''
+      @error = hh[key]
+      return erb :new if @error.length > 1
+    end
+  end
+
+  @message = "Congratulations! The new post created."
+
+  erb :new
 end

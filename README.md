@@ -10,7 +10,7 @@
 * Bootstrap
 * jQuery
 
-#### De la caja:
+#### De la caja
 
 * Blog
 
