@@ -6,15 +6,15 @@
         Add New Post
       </h3>
 
-      <form>
+      <form action="/new" method="post">
         <div class="form-group">
-          <label for="inputPostTitle">Post Title</label>
-          <input type="text" class="form-control" id="inputPostTitle" name="post_title" aria-describedby="emailHelp">
+          <label for="inputTitle">Post Title</label>
+          <input type="text" class="form-control" id="inputTitle" name="title" aria-describedby="emailHelp" placeholder="Type a title" required>
           <!-- small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small -->
         </div>
         <div class="form-group">
-          <label for="textareaPostBody">Post Body</label>
-          <textarea class="form-control" id="textareaPostBody" name="post_body" rows="3"></textarea>
+          <label for="textareaContent">Post Content</label>
+          <textarea class="form-control" id="textareaContent" name="content" rows="3" placeholder="Type post text here" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
