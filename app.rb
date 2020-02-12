@@ -83,5 +83,8 @@ end
 get '/comments/:id' do
   id = params[:id]
 
-  erb "Displaying information for post with ID #{id}"
+  all_posts = @db.execute 'SELECT * FROM Posts WHERE id = ?', [id]
+  @post = all_posts[0]
+
+  erb :comments
 end
