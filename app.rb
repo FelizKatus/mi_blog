@@ -38,12 +38,22 @@ end
 
 configure do
   @db = init_db
+
   @db.execute 'CREATE TABLE IF NOT EXISTS [Posts] (
     [id] INTEGER PRIMARY KEY AUTOINCREMENT,
     [title] TEXT,
     [content] TEXT,
     [created_date] DATE
   )'
+
+  @db.execute 'CREATE TABLE IF NOT EXISTS [Comments] (
+    [id] INTEGER PRIMARY KEY AUTOINCREMENT,
+    [post_id] INTEGER,
+    [name] TEXT,
+    [comment] TEXT,
+    [created_date] DATE
+  )'
+
   # seed_db(@db)
 end
 
@@ -87,4 +97,10 @@ get '/comments/:id' do
   @post = all_posts[0]
 
   erb :comments
+end
+
+post '/comments/:id' do
+  id = params[:id]
+  name = params[:name]
+  comment = params[:comment]
 end
