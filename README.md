@@ -13,6 +13,7 @@
 #### De la caja
 
 * Blog
+* Página de entrada
 * Comentarios
 
 #### Licensia

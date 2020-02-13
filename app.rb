@@ -103,4 +103,10 @@ post '/comments/:id' do
   id = params[:id]
   name = params[:name]
   comment = params[:comment]
+
+  @db.execute 'INSERT INTO Comments (name, comment, created_date, post_id) VALUES (?, ?, datetime(), ?)', [name, comment, id]
+
+  @message = "Congratulations! The new comment added."
+
+  redirect to('/comments/' + id)
 end
