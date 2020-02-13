@@ -96,6 +96,8 @@ get '/comments/:id' do
   all_posts = @db.execute 'SELECT * FROM Posts WHERE id = ?', [id]
   @post = all_posts[0]
 
+  @comments = @db.execute 'SELECT * FROM Comments WHERE post_id = ? ORDER BY id', [id]
+
   erb :comments
 end
 

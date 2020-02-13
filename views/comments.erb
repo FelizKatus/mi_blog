@@ -6,7 +6,25 @@
   <p class="blog-post-meta">
     <%= @post['created_date'] %>
   </p>
-  <%= @post['content'] %>
+  <p>
+    <%= @post['content'] %>
+  </p>
+
+  <h3>
+    Comments:
+  </h3>
+
+  <% @comments.each do |comment| %>
+    <div class="blog-post">
+      <p class="blog-post-meta">
+        <%= comment['created_date'] %>
+        by <a href="#"><%= comment['name'] %></a>
+      </p>
+      <p>
+        <%= comment['comment'] %>
+      </p>
+    </div>
+  <% end %>
 
   <hr>
 
@@ -15,10 +33,6 @@
       <%= @message %>
     </div>
   <% end %>
-
-  <h3>
-    Comments:
-  </h3>
 
   <form action="/comments/<%= @post['id'] %>" method="post">
     <div class="form-group">
