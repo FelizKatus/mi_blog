@@ -15,14 +15,11 @@
       <form action="/new" method="post">
         <div class="form-group">
           <label for="inputTitle">Post Title</label>
-          <!-- input type="text" class="form-control" id="inputTitle" name="title" aria-describedby="emailHelp" placeholder="Type a title" required -->
-          <input type="text" class="form-control" id="inputTitle" name="title" aria-describedby="emailHelp" value="<%= @title %>" placeholder="Type a title">
-          <!-- small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small -->
+          <input type="text" class="form-control" id="inputTitle" name="title" placeholder="Type a title" required>
         </div>
         <div class="form-group">
           <label for="textareaContent">Post Content</label>
-          <!-- textarea class="form-control" id="textareaContent" name="content" rows="3" placeholder="Type a post text here" required></textarea -->
-          <textarea class="form-control" id="textareaContent" name="content" rows="3" placeholder="Type a post text here"></textarea>
+          <textarea class="form-control" id="textareaContent" name="content" rows="3" placeholder="Type a post text here" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
