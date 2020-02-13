@@ -50,11 +50,11 @@ configure do
     [id] INTEGER PRIMARY KEY AUTOINCREMENT,
     [post_id] INTEGER,
     [name] TEXT,
-    [comment] TEXT,
+    [content] TEXT,
     [created_date] DATE
   )'
 
-  # seed_db(@db)
+  #seed_db(@db)
 end
 
 get '/' do
@@ -88,8 +88,6 @@ post '/new' do
   erb :new
 end
 
-# Comments
-
 get '/comments/:id' do
   id = params[:id]
 
@@ -104,9 +102,19 @@ end
 post '/comments/:id' do
   id = params[:id]
   name = params[:name]
-  comment = params[:comment]
+  content = params[:content]
 
-  @db.execute 'INSERT INTO Comments (name, comment, created_date, post_id) VALUES (?, ?, datetime(), ?)', [name, comment, id]
+  hh = {:name   => 'Type your name',
+    :content => 'Type a comment'}
+
+  hh.each do |key, value|
+    if params[key] == ''
+      @error = hh[key]
+      return erb :comments if @error.length > 1
+    end
+  end
+
+  @db.execute 'INSERT INTO Comments (name, content, created_date, post_id) VALUES (?, ?, datetime(), ?)', [name, content, id]
 
   @message = "Congratulations! The new comment added."
 

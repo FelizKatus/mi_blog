@@ -15,6 +15,7 @@
 * Blog
 * Página de entrada
 * Comentarios
+* Verificación de formularios
 
 #### Licensia
 
