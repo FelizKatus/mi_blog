@@ -27,3 +27,4 @@ Eres libre y tienes derecho de hacer todo lo que quieres.
 ![Blog](screenshots/blog.png "Blog")
 ![Formulario de nueva entrada](screenshots/new_post_form.png "Formulario de nueva entrada")
 ![Formulario de comentario](screenshots/comments_form.png "Formulario de comentario")
+![Formulario de contacto](screenshots/contact_form.png "Formulario de contacto")
