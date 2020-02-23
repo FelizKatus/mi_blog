@@ -39,19 +39,19 @@ end
 configure do
   @db = init_db
 
-  @db.execute 'CREATE TABLE IF NOT EXISTS [Posts] (
-    [id] INTEGER PRIMARY KEY AUTOINCREMENT,
-    [title] TEXT,
-    [content] TEXT,
-    [created_date] DATE
+  @db.execute 'CREATE TABLE IF NOT EXISTS Posts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    content TEXT,
+    created_date DATE
   )'
 
-  @db.execute 'CREATE TABLE IF NOT EXISTS [Comments] (
-    [id] INTEGER PRIMARY KEY AUTOINCREMENT,
-    [post_id] INTEGER,
-    [name] TEXT,
-    [content] TEXT,
-    [created_date] DATE
+  @db.execute 'CREATE TABLE IF NOT EXISTS Comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id INTEGER,
+    name TEXT,
+    content TEXT,
+    created_date DATE
   )'
 
   #seed_db(@db)
