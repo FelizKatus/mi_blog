@@ -2,6 +2,15 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 require 'pony'
+require 'sinatra/activerecord'
+
+set :database, 'sqlite3:db.sqlite'
+
+class Post < ActiveRecord::Base
+end
+
+class Comment < ActiveRecord::Base
+end
 
 def init_db
   db = SQLite3::Database.new 'db.sqlite'
