@@ -1,47 +1,42 @@
 <div class="blog-post">
 
   <h2 class="blog-post-title">
-    <%= @post['title'] %>
+    <%= @p.title %>
   </h2>
   <p class="blog-post-meta">
-    <%= @post['created_date'] %>
+    <%= @p.created_at %>
   </p>
   <p>
-    <%= @post['content'] %>
+    <%= @p.content %>
   </p>
 
   <h3>
     Comments:
   </h3>
 
-  <% @comments.each do |comment| %>
+  <% @p.comments.each do |comment| %>
     <div class="blog-post">
       <p class="blog-post-meta">
-        <%= comment['created_date'] %>
-        by <a href="#"><%= comment['name'] %></a>
+        <%= comment.created_at %>
+        by <a href="#"><%= comment.name %></a>
       </p>
       <p>
-        <%= comment['content'] %>
+        <%= comment.content %>
       </p>
     </div>
   <% end %>
 
   <hr>
 
-  <% if @message && @message.length > 0 then %>
-    <div class="alert alert-primary" role="alert">
-      <%= @message %>
-    </div>
-  <% end %>
-
-  <form action="/comments/<%= @post['id'] %>" method="post">
+  <form action="/comments/<%= @p.id %>" method="post">
+    <input type="hidden" name="comment[post_id]" value="<%= @p.id %>">
     <div class="form-group">
-      <label for="inputTitle">Name</label>
-      <input type="text" class="form-control" id="inputName" name="name" value="<%= @name %>" placeholder="Type your name" required>
+      <label for="commentName">Name</label>
+      <input type="text" class="form-control" id="commentName" name="comment[name]" value="<%= @c.name %>" placeholder="Type your name" required>
     </div>
     <div class="form-group">
-      <label for="textareaContent">Comment</label>
-      <textarea class="form-control" id="textareaContent" name="content" rows="3" placeholder="Type a comment text here" required></textarea>
+      <label for="commentContent">Comment</label>
+      <textarea class="form-control" id="commentContent" name="comment[content]" rows="3" placeholder="Type a comment text here" required></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Add Comment</button>
   </form>

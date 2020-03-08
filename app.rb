@@ -8,80 +8,59 @@ set :database, 'sqlite3:db.sqlite3'
 
 class Post < ActiveRecord::Base
   has_many :comments
+
+  validates :title, presence: true, length: { minimum: 2 }
+  validates :content, presence: true, length: { minimum: 2 }
 end
 
 class Comment < ActiveRecord::Base
   belongs_to :post
-end
 
-before do
-  @db = init_db
+  validates :name, presence: true, length: { minimum: 2 }
+  validates :content, presence: true, length: { minimum: 2 }
 end
 
 configure do
 end
 
+before do
+end
+
 get '/' do
-  @all_posts = @db.execute 'SELECT * FROM Posts ORDER BY id DESC'
+  @all_posts = Post.all
 
   erb :index
 end
 
 get '/new' do
+  @p = Post.new
   erb :new
 end
 
 post '/new' do
-  @title   = params[:title]
-  @content = params[:content]
-
-  hh = {:title   => 'Type a title',
-        :content => 'Type a post text'}
-
-  hh.each do |key, value|
-    if params[key] == ''
-      @error = hh[key]
-      return erb :new if @error.length > 1
-    end
+  @p = Post.new params[:post]
+  if @p.save
+    return erb 'Congratulations! The new post are created.'
   end
 
-  @db.execute 'INSERT INTO Posts (title, content, created_date) VALUES (?, ?, datetime())', [@title, @content]
-
-  @message = "Congratulations! The new post created."
-
+  @error = @p.errors.full_messages.first
   erb :new
 end
 
 get '/comments/:id' do
-  id = params[:id]
-
-  all_posts = @db.execute 'SELECT * FROM Posts WHERE id = ?', [id]
-  @post = all_posts[0]
-
-  @comments = @db.execute 'SELECT * FROM Comments WHERE post_id = ? ORDER BY id', [id]
+  @c = Comment.new
+  @p = Post.find(params[:id])
 
   erb :comments
 end
 
 post '/comments/:id' do
-  id = params[:id]
-  name = params[:name]
-  content = params[:content]
-
-  hh = {:name   => 'Type your name',
-    :content => 'Type a comment'}
-
-  hh.each do |key, value|
-    if params[key] == ''
-      @error = hh[key]
-      return erb :comments if @error.length > 1
-    end
+  @c = Comment.new params[:comment]
+  if @c.save
+    return erb 'Congratulations! The new comment added.'
   end
 
-  @db.execute 'INSERT INTO Comments (name, content, created_date, post_id) VALUES (?, ?, datetime(), ?)', [name, content, id]
-
-  @message = "Congratulations! The new comment added."
-
+  @error = @c.errors.full_messages.first
   redirect to('/comments/' + id)
 end
 
