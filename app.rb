@@ -7,9 +7,11 @@ require 'sinatra/activerecord'
 set :database, 'sqlite3:db.sqlite'
 
 class Post < ActiveRecord::Base
+  has_many :comments
 end
 
 class Comment < ActiveRecord::Base
+  belongs_to :post
 end
 
 def init_db
