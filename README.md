@@ -1,13 +1,13 @@
-# Mi(cro) Blog App
+# blog_386
 
-**Mi Blog App** es una plantilla para microblog personal simple de usar, ligera, rápida y libre que está creado en El Reino de España.
+**blog_386** es una plantilla para microblog personal simple de usar, ligera, rápida y libre que está creado en El Reino de España.
 
-**Mi Blog App** se desarrolla con las siguientes fantasticas tecnologías:
+**blog_386** se desarrolla con las siguientes fantasticas tecnologías:
 
 * Ruby
 * Sinatra
 * SQLite
-* Bootstrap
+* BOOTSTRA.386
 * jQuery
 
 #### De la caja
