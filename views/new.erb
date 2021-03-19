@@ -1,23 +1,45 @@
-<main role="main" class="container">
-  <div class="row">
-    <div class="col-md-8 blog-main">
+<div class="row-fluid marketing">
 
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
-        Add New Post
-      </h3>
-
-      <form action="/new" method="post">
-        <div class="form-group">
-          <label for="postTitle">Post Title</label>
-          <input type="text" class="form-control" id="postTitle" name="post[title]" value="<%= @p.title %>" placeholder="Type a title" required>
-        </div>
-        <div class="form-group">
-          <label for="postContent">Post Content</label>
-          <textarea class="form-control" id="postContent" name="post[content]" rows="3" placeholder="Type a post content here" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-
+  <% if @message && @message.length > 0 then %>
+    <div class="alert" role="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= @message %>
     </div>
-  </div>
-</main><!-- /.container -->
+  <% end %>
+
+  <h3>
+    Add a new post
+  </h3>
+
+  <br>
+
+  <form class="form-horizontal" action="/new" method="post">
+    <div class="control-group">
+      <label class="control-label" for="inputTitle">Type a title</label>
+      <div class="controls">
+        <input type="text" id="inputTitle" name="title" value="<%= @title %>" placeholder="Type a title" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSummary">Type a summary</label>
+      <div class="controls">
+        <input type="text" id="inputSummary" name="summary" value="<%= @summary %>" placeholder="Type a summary" required>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputContent">Type a text here</label>
+      <div class="controls">
+        <textarea id="inputContent" name="content" value="<%= @content %>" rows="3" placeholder="Type a text here" required></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <!-- label class="checkbox">
+          <input type="checkbox"> Remember me
+        </label -->
+        <button type="submit" class="btn">Post</button>
+      </div>
+    </div>
+  </form>
+
+</div><!--/marketing -->
