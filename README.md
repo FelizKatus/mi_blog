@@ -24,17 +24,10 @@ Eres libre y tienes derecho de hacer todo lo que quieres.
 
 #### Pantallas
 
-Blog ->
 ![Blog](screenshots/blog.png "Blog")
 
-Formulario de entrada ->
-![Formulario de entrada](screenshots/new_post_form.png "Formulario de entrada")
+![Formulario de nueva entrada](screenshots/new_post.png "Formulario de nueva entrada")
 
-Comentarios ->
 ![Comentarios](screenshots/comments.png "Comentarios")
 
-Formulario de comentario ->
-![Formulario de comentario](screenshots/comments_form.png "Formulario de comentario")
-
-Formulario de contacto ->
-![Formulario de contacto](screenshots/contact_form.png "Formulario de contacto")
+![Formulario de contacto](screenshots/contact.png "Formulario de contacto")
