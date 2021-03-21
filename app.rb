@@ -37,9 +37,11 @@ def seed_db(db)
       '12-02-2020, 23:55']
 end
 
+before do
+  @db = init_db
+end
+
 configure do
-  enable :sessions
-  
   @db = init_db
 
   @db.execute 'CREATE TABLE IF NOT EXISTS Posts (
@@ -60,25 +62,6 @@ configure do
 
   # Comment it after database creation
   # seed_db(@db)
-end
-
-before do
-  @db = init_db
-end
-
-before '/secure/*' do
-  unless session[:identity]
-    session[:previous_url] = request.path
-    @message = 'Sorry, you need to be logged in to visit ' + request.path
-
-    halt erb(:login, :layout => false)
-  end
-end
-
-helpers do
-  def username
-    session[:identity] ? session[:identity] : 'Hello stranger'
-  end
 end
 
 get '/' do
@@ -196,28 +179,4 @@ post '/contact' do
     })
 
   erb '¡Gracias! Email sido enviado.'
-end
-
-get '/secure/customers' do
-  @message = 'This is a secret place that only ' + session[:identity] + ' has access to!'
-  @customers = Customer.order "created_at DESC"
-
-  erb :customers
-end
-
-get '/login/form' do
-  erb :login, :layout => false
-end
-
-post '/login/attempt' do
-  session[:identity] = params['username']
-  where_user_came_from = session[:previous_url] || '/'
-  redirect to where_user_came_from
-end
-
-get '/logout' do
-  session.delete(:identity)
-  @message = 'Logged out'
-
-  erb :home
 end

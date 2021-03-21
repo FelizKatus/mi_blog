@@ -47,6 +47,7 @@
       }
     </style>
     <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/assets/css/docs.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -56,10 +57,9 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="/assets/ico/favicon.png">
-
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="/assets/ico/favicon.png">
   </head>
 
   <body>
@@ -68,48 +68,10 @@
 
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li class="active">
-            <a href="/">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/about">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="/contact">
-              Contact
-            </a>
-          </li>
-          <!-- li class="active"><a href="/new">New</a></li -->
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= username %>
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <% unless session[:identity] then %>
-                <li>
-                  <a class="dropdown-item" href="/login/form">
-                    Login
-                  </a>
-                </li>
-              <% else %>
-                <li>
-                  <a class="dropdown-item" href="/secure/new">
-                    New Post
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/logout">
-                    Logout
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li class="active"><a href="/new">New</a></li>
         </ul>
         <h3 class="muted">386_blog</h3>
       </div>
